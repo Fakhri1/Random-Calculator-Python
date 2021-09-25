@@ -3,19 +3,21 @@ print("")
 
 def Menu_List() :
     print("")
-    print("MENU UTAMA")
+    print("=== MENU UTAMA ===")
     print("")
-    Menu = ["1. Kalkulator" , "2. Temperatur" , "3. Versi Aplikasi","4. Keluar"]
+    Menu = ["1. Kalkulator" , "2. Temperatur" , "3. Waktu","4. Jarak","0. Versi Aplikasi","00. Keluar"]
     print(Menu[0])
     print(Menu[1])
     print(Menu[2])
     print(Menu[3])
+    print(Menu[4])
+    print(Menu[5])
     print("")
     Menu_Utama()
 
 def Calculate_List():
     print("")
-    print("MENU KALKULATOR")
+    print("=== MENU KALKULATOR ===")
     print("")
     Menu = ["1. Penjumlahan","2. Pengurangan","3. Perkalian","4. Pembagian","0. Kembali Ke Menu Utama"]
     print(Menu[0])
@@ -28,7 +30,7 @@ def Calculate_List():
 
 def Temperatur_List():
     print("")
-    print("KALKULATOR SUHU")
+    print("=== KALKULATOR SUHU ===")
     print("")
     Menu = ["1. Celcius / C","2. Reamur / R","3. Kelvin / K","4. Fahrenheit / F","0. Kembali ke Menu Utama"]
     print(Menu[0])
@@ -39,6 +41,27 @@ def Temperatur_List():
     print("")
     Temperatur()
 
+def Waktu_List():
+    print("")
+    print("=== KALKULATOR WAKTU ===")
+    print("")
+    Menu = ["1. Detik","2. Menit","3. Jam","0. Kembali ke Menu Utama"]
+    print(Menu[0])
+    print(Menu[1])
+    print(Menu[2])
+    print(Menu[3])
+    print("")
+    Waktu()
+
+#def Jarak_List():
+ #   print("")
+ #   print("=== KALKULATOR JARAK ===")
+ #   print("")
+ #   MENU = ["1. Kilometer / KM","2. Meter / N","3. Centimeter / CM","0. Kembali ke Menu Utama"]
+ #   print(Menu[0])
+ #   print(Menu[1])
+ #   print(Menu[2])
+
 def Menu_Utama():
     mainmenu = input("Silahkan tulis angka sesuai keterangan di atas! : ")
     if mainmenu == "1" :
@@ -48,13 +71,19 @@ def Menu_Utama():
             Temperatur_List()
         else :
             if mainmenu == "3" :
-                versi()
+                Waktu_List()
             else :
                 if mainmenu == "4" :
-                    exit
-                else : 
-                    print("Angka tidak terdefinisi. Mohon menulis angka yang sudah disediakan!")
-                    Menu_List()
+                    Coming_Soon()
+                else :
+                    if mainmenu == "0" :
+                        versi()
+                    else :
+                        if mainmenu == "00" :
+                            exit
+                        else : 
+                            print("Angka tidak terdefinisi. Mohon menulis angka yang sudah disediakan!")
+                            Menu_List()
 
 def Menu_Kalkulator() :
     operasi = input("Silahkan tulis angka sesuai keterangan di atas! : ")
@@ -112,6 +141,41 @@ def Temperatur() :
                         print("")
                         Temperatur_List()
 
+def Waktu() :
+    print("")
+    waktu = input("Silahkan tulis nomer sesuai dengan jenis suhu yang diketahui : ")
+    print("")
+    if waktu == "1" :
+        a = input("Masukkan Waktu nya! : ")
+        print(a, " Detik = ", (int(a)/60) , " Menit = ", (int(a)/3600), " Jam")
+        print("")
+        akhir()
+    else :
+        if waktu == "2" :
+            a = input("Masukkan Waktu nya! : ")
+            print(a, " Menit = ", (int(a)*60), " Detik = ", (int(a)/60), " Jam")
+            print("")
+            akhir()
+        else :
+            if waktu == "3" :
+                a = input("Masukkan Waktu nya! : ")
+                print(a, " Jam = ", (int(a)*3600), " Jam = ", (int(a)*60), " Menit")
+                print("")
+                akhir()
+            else :
+                print("Angka tidak terdefinisi. Mohon menulis angka yang sudah disediakan!")
+                print("")
+                Waktu_List()
+
+# def jarak() :
+#    print("")
+#    Jarak = input("Silahkan tulis nomer sesuai dengan satuan jarak yang diketahui! : ")
+#    print("")
+#    if jarak == "1" :
+#        a = input("Masukkan Jarak nya! : ")
+#        print(a , "Kilometer = ", (int(a)*1,000), " Meter = ", (int(a)*100,000), " Centimeter")
+#        print("")
+#        akhir()
 
 def penjumlahan() :
     a = input("Masukkan angka pertama : ")
@@ -154,9 +218,20 @@ def akhir() :
             print("")
             akhir()
 
+def Coming_Soon():
+    print("")
+    print("Fitur ini masih dalam tahap pengembangan! Nantikan di update Selanjutnya!")
+    print("")
+    input("Pencet Enter Untuk Kembali ke Menu Awal")
+    print("")
+    Menu_List()
+
 def versi() :
-    print("Versi Aplikasi : v.0.6")
-    print("Last Updated : 2021-09-05")
+    print("")
+    print("KALKULATOR SEDERHANA")
+    print("")
+    print("Versi Aplikasi : v.1.0")
+    print("Last Updated : 2021-09-06")
     print("Created by FakhriF")
     print("")
     print("Silahkan cek versi terbaru aplikasi ini di Github.com/Fakhri1/Random-Calculator-Python !")
