@@ -5,7 +5,7 @@ def Menu_List() :
     print("")
     print("=== MENU UTAMA ===")
     print("")
-    Menu = ["1. Kalkulator" , "2. Temperatur" , "3. Waktu","4. Jarak","0. Versi Aplikasi","00. Keluar"]
+    Menu = ["1. Kalkulator" , "2. Temperatur" , "3. Waktu","4. Jarak (BETA)","0. Versi Aplikasi","00. Keluar"]
     print(Menu[0])
     print(Menu[1])
     print(Menu[2])
@@ -53,14 +53,16 @@ def Waktu_List():
     print("")
     Waktu()
 
-#def Jarak_List():
- #   print("")
- #   print("=== KALKULATOR JARAK ===")
- #   print("")
- #   MENU = ["1. Kilometer / KM","2. Meter / N","3. Centimeter / CM","0. Kembali ke Menu Utama"]
- #   print(Menu[0])
- #   print(Menu[1])
- #   print(Menu[2])
+def Jarak_List():
+    print("")
+    print("=== KALKULATOR JARAK BETA ===")
+    print("")
+    Menu = ["1. Kilometer / KM","2. Meter / M","3. Centimeter / CM","0. Kembali ke Menu Utama"]
+    print(Menu[0])
+    print(Menu[1])
+    print(Menu[2])
+    print('')
+    Jarak()
 
 def Menu_Utama():
     mainmenu = input("Silahkan tulis angka sesuai keterangan di atas! : ")
@@ -74,7 +76,7 @@ def Menu_Utama():
                 Waktu_List()
             else :
                 if mainmenu == "4" :
-                    Coming_Soon()
+                    Jarak_List()
                 else :
                     if mainmenu == "0" :
                         versi()
@@ -112,25 +114,25 @@ def Temperatur() :
     print("")
     if suhu == "1" :
         a = input("Masukkan Angka Suhunya! : ")
-        print (a, " Celcius = ", (int(a)*(4/5)) , " Reamur = " , (int(a)+273) , " Kelvin = " , ((int(a)*(9/5))+32) , " Fahrenheit" )
+        print (a, " Celcius = ", (float(a)*(4/5)) , " Reamur = " , (float(a)+273) , " Kelvin = " , ((float(a)*(9/5))+32) , " Fahrenheit" )
         print("")
         akhir()
     else :
-        if suhu == "2" :
+        if suhu == "2" : 
             a = input("Masukkan Angka Suhunya! : ")
-            print (a, " Reamur = ",(int(a)*(5/4))," Celcius = ",((int(a)*(5/4))+273)," Kelvin = ",((int(a)*(9/4))+32)," Fahrenheit")
+            print (a, " Reamur = ",(float(a)*(5/4))," Celcius = ",((float(a)*(5/4))+273)," Kelvin = ",((float(a)*(9/4))+32)," Fahrenheit")
             print("")
             akhir()
         else :
             if suhu == "3" :
                 a = input("Masukkan Angka Suhunya! : ")
-                print(a, " Kelvin = ",(273-(int(a)))," Celcius = ",((int(a)-273)*(4/5))," Reamur = ",((9/5)*((int(a)-273)+32))," Fahrenheit" )
+                print(a, " Kelvin = ",(273-(float(a)))," Celcius = ",((float(a)-273)*(4/5))," Reamur = ",((9/5)*((float(a)-273)+32))," Fahrenheit" )
                 print("")
                 akhir()
             else :
                 if suhu == "4" :
                     a = input("Masukkan Angka Suhunya! : ")
-                    print(a," Fahrenheit = ",((5/9)*(int(a)-32))," Celcius = ",((4/9)*(int(a)-43)), " Reamur = ",((5/9)*(int(a)-32)+273), " Kelvin" )
+                    print(a," Fahrenheit = ",((5/9)*(float(a)-32))," Celcius = ",((4/9)*(float(a)-43)), " Reamur = ",((5/9)*(float(a)-32)+273), " Kelvin" )
                     print("")
                     akhir()
                 else :
@@ -143,7 +145,7 @@ def Temperatur() :
 
 def Waktu() :
     print("")
-    waktu = input("Silahkan tulis nomer sesuai dengan jenis suhu yang diketahui : ")
+    waktu = input("Silahkan tulis nomer sesuai dengan satuan waktu yang diketahui : ")
     print("")
     if waktu == "1" :
         a = input("Masukkan Waktu nya! : ")
@@ -163,55 +165,84 @@ def Waktu() :
                 print("")
                 akhir()
             else :
-                print("Angka tidak terdefinisi. Mohon menulis angka yang sudah disediakan!")
-                print("")
-                Waktu_List()
+                if waktu == "0" :
+                        Menu_List()
+                else :
+                    print("Angka tidak terdefinisi. Mohon menulis angka yang sudah disediakan!")
+                    print("")
+                    Waktu_List()
 
-# def jarak() :
-#    print("")
-#    Jarak = input("Silahkan tulis nomer sesuai dengan satuan jarak yang diketahui! : ")
-#    print("")
-#    if jarak == "1" :
-#        a = input("Masukkan Jarak nya! : ")
-#        print(a , "Kilometer = ", (int(a)*1,000), " Meter = ", (int(a)*100,000), " Centimeter")
-#        print("")
-#        akhir()
+def Jarak() :
+    a = ("Masukkan Jarak nya! : ")
+    print("")
+    MenuJarak = input("Silahkan tulis nomer sesuai dengan satuan jarak yang diketahui! : ")
+    print("")
+    if MenuJarak == "1" :
+        jarak = float(input(a))
+        print(("{:,}".format(jarak)) , " Kilometer ") 
+        print(("{:,}".format(jarak*1000)), " Meter ")
+        print(("{:,}".format(jarak*100000)), " Centimeter   ")
+        print("")
+        akhir()
+    else :
+        if MenuJarak == "2" :
+            jarak = float(input(a))
+            print(("{:,}".format(jarak/1000)), " Kilometer ")
+            print(("{:,}".format(jarak)), " Meter ")
+            print(("{:,}".format(jarak*100)), " Centimeter ")
+            print("")
+            akhir()
+        else :
+            if MenuJarak == "3" :
+                jarak = float(input(a))
+                print(("{:,}".format(jarak/100000)), " Kilometer  ")
+                print(("{:,}".format(jarak/100)), " Meter  ")
+                print(("{:,}".format(jarak)) , " Centimeter")
+                print("")
+                akhir()
+            else :
+                if MenuJarak == "0" :
+                        Menu_List()
+                else :
+                    print("Angka tidak terdefinisi. Mohon menulis angka yang sudah disediakan!")
+                    print("")
+                    Jarak_List()
 
 def penjumlahan() :
     a = input("Masukkan angka pertama : ")
     b = input("Masukkan angka kedua : ")
-    print("Hasil : ", (int(a) + int(b)))
+    print("Hasil : ", (float(a) + float(b)))
     print("")
     akhir()
 
 def pengurangan() :
     a = input("Masukkan angka pertama : ")
     b = input("Masukkan angka kedua : ")
-    print("Hasil : ", (int(a) - int(b)))
+    print("Hasil : ", (float(a) - float(b)))
     print("")
     akhir()
 
 def perkalian() :
     a = input("Masukkan angka pertama : ")
     b = input("Masukkan angka kedua : ")
-    print("Hasil : ", (int(a) * int(b)))
+    print("Hasil : ", (float(a) * float(b)))
     print("")
     akhir()
 
 def pembagian() :
     a = input("Masukkan angka pertama : ")
     b = input("Masukkan angka kedua : ")
-    print("Hasil : ", (int(a) / int(b)))
+    print("Hasil : ", (float(a) / float(b)))
     print("")
     akhir()
 
 def akhir() :
     x = input("Kembali ke Menu Awal? Y/N : ")
-    if x == "Y":
+    if x == "Y" or x == "y" or x == "Yes":
         print("")
         Menu_List()
     else:
-        if x == "N" :
+        if x == "N" or x == "n" or x == "No" :
             exit
         else:
             print("Huruf tak terdefinisi! Mohon tulis Y atau N!")
@@ -230,14 +261,17 @@ def versi() :
     print("")
     print("KALKULATOR SEDERHANA")
     print("")
-    print("Versi Aplikasi : v.1.0")
-    print("Last Updated : 2021-09-06")
+    print("Versi Aplikasi : v.1.2")
+    print("Last Updated : 2021-09-30")
     print("Created by FakhriF")
     print("")
     print("Silahkan cek versi terbaru aplikasi ini di Github.com/Fakhri1/Random-Calculator-Python !")
+    print("")
+    print('Mengalami Kendala atau Masukan? Silahkan buat "Issue" di Github!')
     print("")
     akhir()
         
 Menu_List()
 
 exit = print("Program Terminated")
+input("Tekan Enter!")
